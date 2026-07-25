@@ -20,5 +20,6 @@ runs:
       shell: bash
       env:
         GH_TOKEN: ${{ inputs.gh_token }}
+        GH_REPO: ${{ github.repository }}
       run: |
         bash "${{ github.action_path }}/checker.sh" "${{ inputs.run_id }}"
