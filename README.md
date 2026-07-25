@@ -17,19 +17,26 @@ on:
           - active
         default: 'inactive'
 
+permissions:
+  actions: read
+  contents: read
+
 jobs:
   pre-flight-check:
     runs-on: ubuntu-latest
     steps:
       - name: Check for active crave runs
-        uses: void-musl/carve-checker@v1
+        if: inputs.crave == 'active'
+        uses: void-musl/crave-checker@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
           run_id: ${{ github.run_id }}
 
   build:
     needs: pre-flight-check
     runs-on: ubuntu-latest
-    # steps
-    # .....
+    steps:
+      - name: Echo
+        run: |
+          echo 'Running'
 ```
