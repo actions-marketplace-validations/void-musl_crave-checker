@@ -8,7 +8,7 @@ if [ -z "$CURRENT_RUN_ID" ]; then
   exit 1
 fi
 
-RUNS_JSON=$(gh run list --status in_progress --json databaseId,name)
+RUNS_JSON=$(gh run list --repo "$GITHUB_REPOSITORY" --status in_progress --json databaseId,name)
 
 for row in $(echo "$RUNS_JSON" | jq -r '.[] | @base64'); do
 
