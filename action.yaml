@@ -1,0 +1,24 @@
+name: 'Carve Checker'
+description: 'Loops through all running actions using a root bash script to detect crave=active.'
+author: 'void-musl'
+branding:
+  icon: 'stop-circle'
+  color: 'red'
+
+inputs:
+  gh_token:
+    description: 'GitHub token to authenticate the CLI'
+    required: true
+  run_id:
+    description: 'The current run ID to exclude from the check'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run root checker script
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.gh_token }}
+      run: |
+        bash "${{ github.action_path }}/checker.sh" "${{ inputs.run_id }}"
