@@ -1,6 +1,6 @@
 name: 'Carve Checker'
 description: 'Loops through all running actions using a root bash script to detect crave=active.'
-author: 'void-musl'
+author: 'voiz-linux'
 branding:
   icon: 'stop-circle'
   color: 'red'

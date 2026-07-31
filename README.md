@@ -27,7 +27,7 @@ jobs:
     steps:
       - name: Check for active crave runs
         if: inputs.crave == 'active'
-        uses: void-musl/crave-checker@main
+        uses: voiz-linux/crave-checker@main
         with:
           gh_token: ${{ secrets.GITHUB_TOKEN }}
           run_id: ${{ github.run_id }}
